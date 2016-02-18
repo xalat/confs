@@ -42,7 +42,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'tomasr/molokai'
-
+Plugin 'evidens/vim-twig'
 
 call vundle#end()            
 filetype plugin indent on    
@@ -77,6 +77,7 @@ set background=dark
 
 " taglist
 nnoremap <silent> <F12> :TlistOpen<CR>
+nnoremap <silent> <F8> :TlistOpen<CR>
 let Tlist_Use_Right_Window   = 1
 let Tlist_Show_One_File = 1
 let Tlist_Auto_Highlight_Tag = 1
@@ -84,6 +85,12 @@ let Tlist_Exit_OnlyWindow = 1
 
 " CTRLP
 set wildignore+=*/vendor/*,*/app/cache/*,*/app/logs/*
+nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>t :CtrlPTag<CR>
+nnoremap <leader>F :CtrlPCurWD<CR>
+nnoremap <leader>M :CtrlPMRUFiles<CR>
+nnoremap <leader>m :CtrlPMixed<CR>
+nnoremap <leader>l :CtrlPLine<CR>
 
 " NEOCOMPLETE
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
