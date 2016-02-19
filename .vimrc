@@ -24,7 +24,6 @@ set incsearch									  " recherche incrémentale
 set ignorecase
 set smartcase
 
-
 call vundle#begin()
 
 
@@ -36,13 +35,15 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
 Plugin 'stephpy/vim-php-cs-fixer'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'vim-scripts/taglist.vim'
+Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-surround'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Shougo/neocomplete.vim'
-Plugin 'tomasr/molokai'
 Plugin 'evidens/vim-twig'
+Plugin 'msanders/snipmate.vim'
+Plugin 'joshtronic/php.vim'
+Plugin 'tacahiroy/ctrlp-funky'
 
 call vundle#end()            
 filetype plugin indent on    
@@ -75,22 +76,28 @@ let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer"
 colorscheme solarized
 set background=dark
 
-" taglist
-nnoremap <silent> <F12> :TlistOpen<CR>
-nnoremap <silent> <F8> :TlistOpen<CR>
-let Tlist_Use_Right_Window   = 1
-let Tlist_Show_One_File = 1
-let Tlist_Auto_Highlight_Tag = 1
-let Tlist_Exit_OnlyWindow = 1
+" tagbar
+nnoremap <silent> <F12> :TagbarOpen<CR>
+nnoremap <silent> <F8> :TagbarToggle<CR>
+let Tagbar_Use_Right_Window   = 1
+"let Tlist_Show_One_File = 1
+"let Tlist_Auto_Highlight_Tag = 1
+"let Tlist_Exit_OnlyWindow = 1
+"let tlist_php_setting = 'php;f:function'
 
 " CTRLP
 set wildignore+=*/vendor/*,*/app/cache/*,*/app/logs/*
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>F :CtrlPCurWD<CR>
-nnoremap <leader>M :CtrlPMRUFiles<CR>
-nnoremap <leader>m :CtrlPMixed<CR>
+nnoremap <leader>m :CtrlPMRUFiles<CR>
+nnoremap <leader>M :CtrlPMixed<CR>
 nnoremap <leader>l :CtrlPLine<CR>
+nnoremap <Leader>fu :CtrlPFunky<Cr>
+
+" PIV
+let g:DisableAutoPHPFolding = 1 
+
 
 " NEOCOMPLETE
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
@@ -157,7 +164,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
@@ -165,4 +172,12 @@ endif
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
  
+"function! PhpSyntaxOverride()
+  "hi! def link phpDocTags  phpDefine
+  "hi! def link phpDocParam phpType
+"endfunction
 
+"augroup phpSyntaxOverride
+  "autocmd!
+  "autocmd FileType php call PhpSyntaxOverride()
+"augroup END
