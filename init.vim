@@ -74,7 +74,7 @@ let g:syntastic_php_checkers=['php', 'phpcs']
 let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 
 " php-cs-fixer
-let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer"
+"let g:php_cs_fixer_path = "~/.composer/vendor/bin"
 
 " tagbar
 nnoremap <silent> <F12> :TagbarOpen<CR>
