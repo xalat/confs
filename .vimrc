@@ -1,6 +1,5 @@
-set nocompatible
+syntax enable 
 set number
-syntax enable
 filetype off 
 set rtp+=~/.vim/bundle/Vundle.vim
 set guifont=hack\ 10
@@ -10,7 +9,7 @@ noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 let g:mapleader = ','
 
-set autoindent                                    " indentation automatique avancée
+
 set smartindent                                   " indentation plus intelligente
 set laststatus=2                                  " ajoute une barre de status
 set backspace=indent,eol,start                    " autorisation du retour arrière
@@ -39,10 +38,9 @@ Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-surround'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/deoplete.nvim'
 Plugin 'evidens/vim-twig'
 Plugin 'msanders/snipmate.vim'
-Plugin 'joshtronic/php.vim'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'chriskempson/base16-vim'
 Plugin 'noahfrederick/vim-hemisu'
@@ -76,9 +74,8 @@ let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 " php-cs-fixer
 let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer"
 
-colorscheme molokai 
+colorscheme molokai
 let g:molokai_original = 1
-"set background=dark
 
 " tagbar
 nnoremap <silent> <F12> :TagbarOpen<CR>
@@ -176,12 +173,3 @@ let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
  
-"function! PhpSyntaxOverride()
-  "hi! def link phpDocTags  phpDefine
-  "hi! def link phpDocParam phpType
-"endfunction
-
-"augroup phpSyntaxOverride
-  "autocmd!
-  "autocmd FileType php call PhpSyntaxOverride()
-"augroup END
