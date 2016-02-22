@@ -1,8 +1,6 @@
 set number
 syntax enable
-filetype off 
-set rtp+=~/.vim/bundle/Vundle.vim
-"set guifont=hack\ 10
+filetype plugin indent on    
 noremap   <Up>     <NOP>
 noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
@@ -23,28 +21,25 @@ set incsearch									  " recherche incrémentale
 set ignorecase
 set smartcase
 
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-fugitive'
+Plug 'bling/vim-airline'
+Plug 'stephpy/vim-php-cs-fixer'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/nerdcommenter'
+Plug 'Shougo/deoplete.nvim'
+Plug 'evidens/vim-twig'
+Plug 'msanders/snipmate.vim'
+Plug 'tacahiroy/ctrlp-funky'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-fugitive'
-Plugin 'bling/vim-airline'
-Plugin 'stephpy/vim-php-cs-fixer'
-Plugin 'majutsushi/tagbar'
-Plugin 'tpope/vim-surround'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'evidens/vim-twig'
-Plugin 'msanders/snipmate.vim'
-Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'frankier/neovim-colors-solarized-truecolor-only'
-
-call vundle#end()            
-filetype plugin indent on    
+call plug#end()
 
 " COLOR SCHEME
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -70,7 +65,7 @@ let s:php_executable = "/usr/bin/php"
 if !(executable(s:php_executable))
 	let makeprg = php_executable . " -l %"
 endif
-let g:syntastic_php_checkers=['php', 'phpcs']
+let g:syntastic_php_checkers=['php']
 let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 
 " php-cs-fixer
