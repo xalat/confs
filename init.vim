@@ -1,25 +1,38 @@
 set number
-syntax enable
+"syntax enable
 filetype plugin indent on    
+
+let g:mapleader = ','
 noremap   <Up>     <NOP>
 noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
-let g:mapleader = ','
+tnoremap <Esc> <C-\><C-n>
+tnoremap <A-h> <C-\><C-n><C-w>h
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 
-set autoindent                                    " indentation automatique avancée
-set smartindent                                   " indentation plus intelligente
-set laststatus=2                                  " ajoute une barre de status
-set backspace=indent,eol,start                    " autorisation du retour arrière
-set history=50                                    " historique de 50 commandes
-set ruler                                         " affiche la position courante au sein du fichier
-set showcmd                                       " affiche la commande en cours
-set shiftwidth=4                                  "
-set tabstop=4
+
+"set autoindent                                    " indentation automatique avancée
+"set smartindent                                   " indentation plus intelligente
+"set laststatus=2                                  " ajoute une barre de status
+"set backspace=indent,eol,start                    " autorisation du retour arrière
+"set history=50                                    " historique de 50 commandes
+"set ruler                                         " affiche la position courante au sein du fichier
+"set showcmd                                       " affiche la commande en cours
+"set shiftwidth=4                                  "
+"set tabstop=4
 set showmatch                                     " vérification présence ([ ou { à la frappe de )] ou  } ])"
-set incsearch									  " recherche incrémentale	
-set ignorecase
-set smartcase
+"set incsearch									  " recherche incrémentale	
+"set ignorecase
+"set smartcase
+
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 call plug#begin('~/.vim/plugged')
 
@@ -38,11 +51,11 @@ Plug 'evidens/vim-twig'
 Plug 'msanders/snipmate.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'Valloric/YouCompleteMe'
 
 call plug#end()
 
 " COLOR SCHEME
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
 colorscheme solarized
 
@@ -50,6 +63,7 @@ colorscheme solarized
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
+nmap <leader>n :NERDTreeFind<CR>
 
 " SYNTASTIC
 set statusline+=%#warningmsg#
@@ -69,7 +83,7 @@ let g:syntastic_php_checkers=['php']
 let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 
 " php-cs-fixer
-"let g:php_cs_fixer_path = "~/.composer/vendor/bin"
+let g:php_cs_fixer_path = "~/.composer/vendor/bin"
 
 " tagbar
 nnoremap <silent> <F12> :TagbarOpen<CR>
