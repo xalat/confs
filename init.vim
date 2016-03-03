@@ -1,6 +1,6 @@
 set number
 "syntax enable
-filetype plugin indent on    
+"filetype plugin indent on    
 
 let g:mapleader = ','
 noremap   <Up>     <NOP>
@@ -18,15 +18,15 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
 
-"set autoindent                                    " indentation automatique avancée
-"set smartindent                                   " indentation plus intelligente
+set autoindent                                    " indentation automatique avancée
+set smartindent                                   " indentation plus intelligente
 "set laststatus=2                                  " ajoute une barre de status
 "set backspace=indent,eol,start                    " autorisation du retour arrière
 "set history=50                                    " historique de 50 commandes
 "set ruler                                         " affiche la position courante au sein du fichier
 "set showcmd                                       " affiche la commande en cours
-"set shiftwidth=4                                  "
-"set tabstop=4
+set shiftwidth=4                                  "
+set tabstop=4
 set showmatch                                     " vérification présence ([ ou { à la frappe de )] ou  } ])"
 "set incsearch									  " recherche incrémentale	
 "set ignorecase
@@ -40,7 +40,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'stephpy/vim-php-cs-fixer'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-surround'
@@ -51,7 +52,12 @@ Plug 'evidens/vim-twig'
 Plug 'msanders/snipmate.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'shawncplus/phpcomplete.vim'
+"Plug 'ervandew/supertab'
+"Plug 'phpvim/phpcd.vim', { 'for': 'php' }
+"Plug 'vim-scripts/progressbar-widget' 
 Plug 'Valloric/YouCompleteMe'
+Plug 'MattesGroeger/vim-bookmarks'
 
 call plug#end()
 
@@ -104,5 +110,13 @@ nnoremap <leader>M :CtrlPMixed<CR>
 nnoremap <leader>l :CtrlPLine<CR>
 nnoremap <Leader>fu :CtrlPFunky<Cr>
 
-" DEOPLETE
-let g:deoplete#enable_at_startup = 1
+" YCM
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
+
+" vim-bookmarks
+let g:bookmark_save_per_working_dir = 1
+let g:bookmark_auto_save = 1
+
+" phpcomplete
+autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+set completeopt=longest,menuone
