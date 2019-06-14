@@ -1,0 +1,7 @@
+[user]
+	name = Xavier Latry
+	email = xavier.latry@mailoo.org
+[push]
+	default = simple
+[core]
+	excludesfile = /home/xav/.gitignore_global

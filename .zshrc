@@ -5,7 +5,7 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="ys"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -90,4 +90,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 export EDITOR=/usr/bin/vim
-export PATH=$PATH:/home/carma/.composer/vendor/bin
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/.purepower
+export GOPATH=$HOME/go
