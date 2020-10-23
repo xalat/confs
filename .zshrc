@@ -89,8 +89,9 @@ fi
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-export EDITOR=/usr/bin/vim
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.purepower
 export GOPATH=$HOME/go
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
